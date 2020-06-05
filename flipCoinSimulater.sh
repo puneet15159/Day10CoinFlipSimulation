@@ -34,5 +34,35 @@ then
 	echo "tails won by: $result"
 else
 
-	echo "its a tie"
+	echo "its a tie, continue till we have winner"
+	t=0
+	h=0
+	result=0
+  	while (( result < 2 ))
+	do
+	    flip=$((RANDOM%2))
+	    if [[ flip -eq 1 ]]
+	    then
+ 		((++t))
+ 	    else
+	    
+		((++h))
+	    fi
+
+	    result=t-h
+	    if [[ result -ge 2 ]]
+ 	    then
+		echo "we have winner : tails"
+		break
+	    fi
+
+ 	    result=h-t
+            if [[ result -ge 2 ]]
+            then
+                echo "we have winner : heads"
+                break
+            fi
+
+	done
 fi
+
